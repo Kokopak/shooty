@@ -19,12 +19,25 @@ class Gun(element.Element):
         self.bullets = []
         self.rotation = 180
 
+
+        self.power_shoot = False
+        self.nb_tour = 0
+
     def update(self, dt):
         if self.key_handler[key.LEFT]:
             self.rotation -= self.rotate_speed * dt
 
         if self.key_handler[key.RIGHT]:
             self.rotation += self.rotate_speed * dt
+
+        if self.key_handler[key.X]:
+            self.power_shoot = True
+        else:
+            self.power_shoot = False
+
+        if self.power_shoot :
+            self.rotation += 600 * dt
+            self.fire()
 
     def on_key_press(self, symbol, modifiers):
         if symbol == key.SPACE:
