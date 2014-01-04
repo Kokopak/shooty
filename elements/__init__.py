@@ -1,3 +1,1 @@
-import base
-import bullet
-import gun
+__all__ = ['base', 'bullet', 'gun']
