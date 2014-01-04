@@ -13,16 +13,25 @@ import config
 window = pyglet.window.Window(width=config.WIDTH, height=config.HEIGHT, caption="Shooty")
 pyglet.gl.glClearColor(1, 1, 1, 1)
 
-base = elements.base.Base(img=pyglet.image.load("img/base.png"))
 
-gun = elements.gun.Gun(img=pyglet.image.load("img/gun.png"))
+base = elements.base.Base(img=pyglet.image.load("img/base.png"), x=config.WIDTH/2, y=0, scale=8)
+base.y = base.height
+
+gun = elements.gun.Gun(img=pyglet.image.load("img/gun.png"), x=base.x, y=0, scale=8)
 for handl in gun.event_handlers:
     window.push_handlers(handl)
+gun.y = base.height / 8
 
 fps_display = pyglet.clock.ClockDisplay()
 
+
 def update(dt):
     gun.update(dt)
+    print gun.bullets
+    for bullet in gun.bullets:
+        bullet.update(dt)
+        if bullet.out_of_screen():
+            gun.bullets.remove(bullet)
 
 @window.event
 def on_draw():

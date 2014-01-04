@@ -10,9 +10,5 @@ import config
 
 class Base(element.Element):
     
-    def __init__(self, img, x=0, y=0):
-        super(Base, self).__init__(img=img)
-
-        self.scale_properly()
-        self.x = config.WIDTH / 2
-        self.y = self.height
+    def __init__(self, img, x, y, scale):
+        element.Element.__init__(self, img=img, x=x, y=y, scale=scale)

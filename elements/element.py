@@ -6,7 +6,7 @@ from pyglet.gl import gl
 
 class Element(pyglet.sprite.Sprite):
     
-    def __init__(self, img, x=0, y=0):
+    def __init__(self, img, x, y, scale):
         pyglet.sprite.Sprite.__init__(self, img=img, x=x, y=y)
 
         self.image.anchor_x = self.image.width / 2
@@ -15,6 +15,9 @@ class Element(pyglet.sprite.Sprite):
         self.velocity_x = 0.0
         self.velocity_y = 0.0
 
+        self.scale_factor = scale
+        self.scale_properly()
+
     def scale_properly(self) :
         gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_NEAREST)
-        self.scale = 8
+        self.scale = self.scale_factor
