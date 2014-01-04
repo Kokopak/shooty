@@ -5,12 +5,12 @@ import pyglet
 from pyglet.gl import gl
 
 class Element(pyglet.sprite.Sprite):
-    
+
     def __init__(self, img, x, y, scale):
         pyglet.sprite.Sprite.__init__(self, img=img, x=x, y=y)
 
         self.image.anchor_x = self.image.width / 2
-        self.image.anchor_y = self.image.height
+        self.image.anchor_y = self.image.height / 2
 
         self.velocity_x = 0.0
         self.velocity_y = 0.0

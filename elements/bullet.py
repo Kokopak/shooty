@@ -14,6 +14,10 @@ class Bullet(element.Element):
         self.velocity_x = math.cos(angle) * self.speed
         self.velocity_y = math.sin(angle) * self.speed
         self.rotation = rotation
+        self.died = False
+
+    def set_died(self, died):
+        self.died = died
 
     def update(self, dt):
         self.x += self.velocity_x * dt
@@ -23,12 +27,5 @@ class Bullet(element.Element):
         return self.x < 0 or self.y < 0 or self.x > config.WIDTH or self.y > config.HEIGHT
 
     def collide_with(self, enemy):
-        distance_min = ((self.width * config.SCALE) / 2 + enemy.width / 2)
         distance = math.sqrt((self.x-enemy.x)**2 + (self.y-enemy.y)**2)
-        print distance_min
-        return distance <= distance_min
-
-        # self.x = enemy.x + enemy.width / 2
-        # #self.y = enemy.y - enemy.height / 2
-        # # if self.x == enemy.x and self.y == enemy.y - enemy.height / 2:
-        # #     print "collision"
+        return distance <= enemy.height
