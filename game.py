@@ -12,6 +12,7 @@ pyglet.gl.glClearColor(1, 1, 1, 1)
 
 b = base.Base(img=config.IMG_BASE, x=config.WIDTH/2, y=(config.IMG_BASE.height * config.SCALE)/2, scale=config.SCALE)
 g = gun.Gun(img=config.IMG_GUN, x=b.x, y=b.y + b.height/8, scale=config.SCALE)
+g.enable_power_shoot()
 
 for handl in g.event_handlers:
     window.push_handlers(handl)
