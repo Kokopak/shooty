@@ -9,10 +9,8 @@ from elements import *
 window = pyglet.window.Window(width=config.WIDTH, height=config.HEIGHT, caption="Shooty")
 pyglet.gl.glClearColor(1, 1, 1, 1)
 
-b = base.Base(img=pyglet.image.load("img/base.png"), x=config.WIDTH/2, y=0, scale=8)
-b.y = b.height
-
-g = gun.Gun(img=pyglet.image.load("img/gun.png"), x=b.x, y=b.height/8, scale=8)
+b = base.Base(img=config.IMG_BASE, x=config.WIDTH/2, y=config.IMG_BASE.height * 8, scale=8)
+g = gun.Gun(img=config.IMG_GUN, x=b.x, y=b.height/8, scale=8)
 
 for handl in g.event_handlers:
     window.push_handlers(handl)

@@ -34,7 +34,7 @@ class Gun(element.Element):
         angle = -math.radians(self.rotation) - math.pi / 2
         gun_radius = self.height
 
-        b = bullet.Bullet(img=pyglet.image.load("img/bullet.png"),
+        b = bullet.Bullet(img=config.IMG_BULLET,
             x=self.x + math.cos(angle) * gun_radius,
             y=self.y + math.sin(angle) * gun_radius,
             angle=angle,
