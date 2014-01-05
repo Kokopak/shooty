@@ -8,10 +8,15 @@ import math
 
 class Enemy(element.Element):
 
-    def __init__(self, img, x, y, scale):
+    def __init__(self, img, x, y, scale, life, boss=False):
         element.Element.__init__(self, img=img, x=x, y=y, scale=scale)
-        self.speed = 100
-        
+        self.boss = boss
+        self.life = life
+        if self.boss:
+            self.speed = 50
+        else:
+            self.speed = 100
+
     def update(self, dt):
         self.y -= self.speed * dt
         #self.y = 550
