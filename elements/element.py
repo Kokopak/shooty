@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pyglet
+import math
 from pyglet.gl import gl
 
 class Element(pyglet.sprite.Sprite):
@@ -21,3 +22,7 @@ class Element(pyglet.sprite.Sprite):
     def scale_properly(self) :
         gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_NEAREST)
         self.scale = self.scale_factor
+
+    def collide_with(self, other):
+        distance = math.sqrt((self.x-other.x)**2 + (self.y-other.y)**2)
+        return distance <= other.height

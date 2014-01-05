@@ -37,7 +37,6 @@ class Game(pyglet.window.Window):
 
         self.fps_display = pyglet.clock.ClockDisplay()
 
-
     def update(self, dt):
         self.g.update(dt)
         for bullet in self.g.bullets:
@@ -58,11 +57,14 @@ class Game(pyglet.window.Window):
 
         for e in self.enemies:
             e.update(dt)
+            if e.collide_with(self.b):
+                e.x -= self.b.width * dt
             if e.out_of_screen():
+                #On perd des PV
                 self.enemies.remove(e)
 
 
-        if self.enemies_kills == 1:
+        if self.enemies_kills == 5:
             self.spawn_boss = True
 
         if self.spawn_boss:
